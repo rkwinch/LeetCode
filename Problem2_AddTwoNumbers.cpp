@@ -119,8 +119,9 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
   ListNode* l6 = l3; // make another listnode and point it to current one
 
   while (num1 < str1.length() - 1) // num1 starts at 0.  So just go through all values.
-    // don't to to end since do -2 below since already have one value
-  { // already have first value, so that's why it's -2
+    // don't go to end (-1) since doing -2 below  for str1 index.  This is because we already
+    // have first value from l3->val = str1[str1.length() - 1]
+  { 
     ListNode* l4 = new ListNode(str1[str1.length() - num1 - 2] - '0'); 
     l6->next = l4; // set next one to the one you just made
     l6 = l6->next; // continue to next
