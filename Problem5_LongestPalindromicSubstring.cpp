@@ -29,6 +29,7 @@ string longestPalindrome(string s) {
   std::string sub2 = "";
   std::string longestSub = "";
   std::string sub = "";
+  bool isEvenMiddle = false;
 
   for (int i = 0; i < s.length(); ++i)
   { // start from index i and fan out on either side
