@@ -19,6 +19,15 @@ Output: "bb
 // side to check if it's a palindrome.  If not, just continue going to the right and repeating.
 // Special cases were handled if the middle of the palindrome was even, if the palindrome was 
 // just one character long or two characters long
+#include <string>
+#include <iostream>
+
+using namespace std;
+string longestPalindrome(string s);
+
+int main(int argc, char **argv) {
+  std::cout << longestPalindrome(argv[1]) << std::endl;
+}
 
 string longestPalindrome(string s) {
   bool isPalin = true;
@@ -56,6 +65,8 @@ string longestPalindrome(string s) {
     {
       sub += s[i];
 
+      // since sub will only be one char long, this will only be the longest palindrome
+      // in the case of a single character input
       if (sub.length() > longestSub.length()) longestSub = sub; // update longest palindrome
 
       sub = ""; // reset
@@ -68,10 +79,11 @@ string longestPalindrome(string s) {
       sub += s[1];
       return sub;
     }
-    // need at least a single value in a non-empty string
-    if ((s[indexL] != s[indexR]) && (s[i] != s[indexR]))
+
+    // disallow non-palindromes, but allow case 
+    // like "cbbd" where the first b starts the palindrome to go through
+    if ((s[indexL] != s[indexR])  && (s[i] != s[indexR]))
     {
-      sub += s[i];
       continue;
     }
 
